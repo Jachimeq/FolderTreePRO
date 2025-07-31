@@ -1,22 +1,18 @@
-import express from "express";
-const router = express.Router();
-
-router.post("/", async (req, res) => {
-  const { content } = req.body;
-
-  if (!content || typeof content !== "string") {
-    return res.status(400).json({ error: "Invalid content" });
+export async function classifyContent(content: string): Promise<string[]> {
+  try {
+    const response = await fetch("http://localhost:3000/api/classify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content }),
+    });
+    const data = await response.json();
+    const raw = data.result;
+    if (Array.isArray(raw)) return raw;
+    if (typeof raw === "string") return [raw];
+    return ["brak"];
+  } catch (err) {
+    console.error("❌ classifyContent error:", err);
+    return ["błąd"];
   }
-
-  // Prosty mock – tu możesz podpiąć AI
-  const lower = content.toLowerCase();
-  let result = "inne";
-
-  if (lower.includes("faktura")) result = "finanse";
-  else if (lower.includes("zdjęcie") || lower.includes("photo")) result = "obrazy";
-  else if (lower.includes("dokument")) result = "dokumenty";
-
-  return res.json({ result });
-});
-
-export default router;
+}
+  
