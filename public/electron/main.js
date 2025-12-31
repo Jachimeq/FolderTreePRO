@@ -14,7 +14,7 @@ function createWindow() {
   });
 
   // Tryb DEV – ładuje Next.js z localhost
-  const devUrl = 'http://localhost:3000';
+  const devUrl = 'http://localhost:3013';
   mainWindow.loadURL(devUrl);
 
   // Otwórz devtools jeśli chcesz

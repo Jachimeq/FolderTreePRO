@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
@@ -7,14 +7,18 @@ import path from 'path';
 import chalk from 'chalk';
 import { ApolloServer } from 'apollo-server-express';
 import { typeDefs } from '../graphql/schema';
-import resolvers from '../graphql/resolvers.ts';
+import resolvers from '../graphql/resolvers';
 
 
 dotenv.config();
 
-const app: Express = express();
+const app = express();
 
 app.use(cors());
+
+app.get('/', (req, res) => {
+  res.send('Backend server is running!');
+});
 
 /**
  * Generuje drzewo folderów z kolorami i obsługą błędów.
@@ -61,23 +65,39 @@ function generateFolderTree(dirPath: string, prefix = ''): string[] {
 
 // Start serwera z GraphQL
 async function startServer() {
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
+  try {
+    const server = new ApolloServer({
+      typeDefs,
+      resolvers,
+    });
 
-  await server.start();
-  server.applyMiddleware({ app });
+    await server.start();
+    server.applyMiddleware({ app: app as any });
 
-  const PORT = process.env.PORT || 4000;
-  app.listen(PORT, () =>
-    console.log(`🚀 Server running at http://localhost:${PORT}${server.graphqlPath}`)
-  );
+    const PORT = Number(process.env.PORT) || 4010;
+    console.log(`Attempting to start server on port ${PORT}...`);
+    const httpServer = app.listen(PORT, '0.0.0.0', () => {
+      console.log(`🚀 Server successfully listening at http://localhost:${PORT}${server.graphqlPath}`);
+      console.log(`Server address:`, httpServer.address());
+    });
+    
+    httpServer.on('error', (error) => {
+      console.error('❌ Server error:', error);
+    });
+    
+    httpServer.on('listening', () => {
+      console.log('✅ Server is now listening');
+      console.log('Server should be accessible now...');
+    });
+    
+    // Keep the process alive
+    setInterval(() => {
+      console.log('Server still running...');
+    }, 10000);
+  } catch (error) {
+    console.error('❌ Failed to start server:', error);
+    process.exit(1);
+  }
 }
 
-startServer();
-
-// Przykład użycia z CLI
-const targetDir = process.argv[2] || '.';
-console.log(chalk.yellow(`🌳 Drzewo folderów dla: ${targetDir}\n`));
-generateFolderTree(targetDir).forEach((line) => console.log(line));
+startServer().catch(console.error);
