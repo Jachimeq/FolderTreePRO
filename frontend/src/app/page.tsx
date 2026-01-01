@@ -181,7 +181,7 @@ export default function Home() {
         <div className="pointer-events-none absolute left-[-25%] top-[-10%] h-80 w-80 rounded-full bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-transparent blur-3xl" />
         <div className="pointer-events-none absolute right-[-10%] bottom-[-20%] h-96 w-96 rounded-full bg-gradient-to-tl from-sky-400/10 via-indigo-500/10 to-transparent blur-3xl" />
         <div className="relative z-10">
-          <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-7">
+          <nav className="ft-container flex items-center justify-between py-7">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 text-lg font-bold text-white shadow-lg">
                 FT
@@ -202,269 +202,247 @@ export default function Home() {
                 Pricing
               </a>
             </div>
-            <div className="flex items-center gap-4">
-              <span
-                className={`hidden items-center gap-2 rounded-full px-3 py-1 text-xs font-medium sm:flex ${
-                  apiStatus === "ok"
-                    ? "bg-emerald-500/10 text-emerald-300"
-                    : apiStatus === "checking"
-                    ? "bg-amber-500/10 text-amber-300"
-                    : "bg-slate-700/60 text-slate-300"
-                }`}
-                aria-live="polite"
-              >
-                <span className={`h-1.5 w-1.5 rounded-full ${
-                  apiStatus === "ok"
-                    ? "bg-emerald-400"
-                    : apiStatus === "checking"
-                    ? "bg-amber-300"
-                    : "bg-slate-400"
-                }`} />
-                {apiStatus === "ok" ? "API Online" : apiStatus === "checking" ? "Checking API" : "Demo mode"}
-              </span>
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => signIn("github")}
-                className="inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+                className="inline-flex items-center justify-center rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-slate-900 shadow-lg transition hover:-translate-y-0.5 hover:bg-white"
               >
-                Sign in with GitHub
+                Zaloguj
               </button>
             </div>
           </nav>
 
-          <main className="mx-auto max-w-6xl px-6 pb-24">
-            <section className="grid grid-cols-1 gap-16 pt-8 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)] lg:items-center">
-              <div className="space-y-10">
-                <div className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-slate-300">
-                  Operating system for knowledge ops
+          <main className="ft-container pb-16">
+            <section className="grid gap-12 lg:grid-cols-[minmax(0,_1.2fr)_minmax(0,_0.8fr)]">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/80">
+                  Folder intelligence
                 </div>
-                <div className="space-y-6">
-                  <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl xl:text-6xl">
-                    Command shared workspaces with live AI governance
-                  </h1>
-                  <p className="text-lg leading-relaxed text-slate-300">
-                    FolderTree PRO unifies folder intelligence, automation, and compliance workflows. Replace the weekly clean-up sprint with a continuous, auditable engine designed for fast-moving operations teams.
+                <div className="space-y-4">
+                  <h1 className="text-4xl font-bold leading-tight text-white sm:text-5xl">Porządek w każdej strukturze</h1>
+                  <p className="text-lg leading-relaxed text-slate-200/90">
+                    AI pilnuje zasad, Ty sterujesz zmianą. FolderTree łączy audyt, automatyzację i widoczność w jednym panelu, bez spinania wszystkiego arkuszami.
                   </p>
                 </div>
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <div className="flex flex-wrap items-center gap-3">
                   <button
                     onClick={() => signIn("github")}
-                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 px-6 py-3 text-sm font-semibold text-white shadow-2xl transition hover:-translate-y-0.5 hover:shadow-[0_20px_45px_-15px_rgba(59,130,246,0.7)]"
+                    className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 shadow-[0_18px_45px_-25px_rgba(255,255,255,0.8)] transition hover:-translate-y-0.5"
                   >
-                    Launch interactive demo
+                    Wejdź do aplikacji
                   </button>
                   <a
-                    href="#playbook"
-                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/80 transition hover:border-white/40 hover:text-white"
+                    href="#capabilities"
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white"
                   >
-                    Browse onboarding playbook
+                    Zobacz możliwości
                   </a>
                 </div>
-                <div className="grid gap-4 pt-6 sm:grid-cols-2 lg:grid-cols-4">
-                  {heroStats.map((item) => (
-                    <div
-                      key={item.label}
-                      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 shadow-[0_25px_55px_-45px_rgba(59,130,246,0.9)] transition hover:-translate-y-1 hover:border-white/20"
-                    >
-                      <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent" />
-                      </div>
-                      <p className="text-2xl font-semibold text-white">{item.value}</p>
-                      <p className="text-xs uppercase tracking-[0.2em] text-slate-300">{item.label}</p>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {heroStats.map((stat) => (
+                    <div key={stat.label} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p className="text-2xl font-bold text-white">{stat.value}</p>
+                      <p className="text-xs uppercase tracking-[0.25em] text-slate-400">{stat.label}</p>
                     </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.3em] text-slate-500">
-                  <span className="text-slate-400">Validated by teams at</span>
-                  {partnerBadges.map((badge) => (
-                    <span key={badge} className="rounded-full border border-white/10 px-3 py-1 text-slate-300">
-                      {badge}
-                    </span>
                   ))}
                 </div>
               </div>
-              <div className="relative">
-                <div className="absolute -inset-8 rounded-[36px] bg-gradient-to-br from-blue-500/40 via-indigo-500/20 to-purple-500/10 blur-2xl" />
-                <div className="relative space-y-6 rounded-[32px] border border-white/10 bg-slate-900/80 p-6 shadow-[0_20px_45px_-25px_rgba(15,23,42,1)]">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-semibold text-white/80">Workspace access</p>
-                      <p className="text-xs text-slate-400">Authenticate to continue</p>
-                    </div>
+              <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-[0_30px_70px_-55px_rgba(59,130,246,0.65)]">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-semibold text-white/90">Panel dostępu</p>
+                    <p className="text-xs text-slate-400">Live sandbox</p>
+                  </div>
+                  <span
+                    className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${
+                      apiStatus === "ok"
+                        ? "bg-emerald-500/10 text-emerald-200"
+                        : apiStatus === "checking"
+                        ? "bg-amber-500/10 text-amber-200"
+                        : "bg-slate-700/60 text-slate-300"
+                    }`}
+                    aria-live="polite"
+                  >
                     <span
-                      className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ${
-                        apiStatus === "ok"
-                          ? "bg-emerald-500/10 text-emerald-300"
-                          : apiStatus === "checking"
-                          ? "bg-amber-500/10 text-amber-300"
-                          : "bg-slate-700/60 text-slate-300"
-                      }`}
-                    >
-                      <span className={`h-1.5 w-1.5 rounded-full ${
+                      className={`h-1.5 w-1.5 rounded-full ${
                         apiStatus === "ok"
                           ? "bg-emerald-400"
                           : apiStatus === "checking"
                           ? "bg-amber-300"
                           : "bg-slate-400"
-                      }`} />
-                      {apiStatus === "ok" ? "Backend live" : apiStatus === "checking" ? "Checking" : "Demo"}
-                    </span>
+                      }`}
+                    />
+                    {apiStatus === "ok" ? "API online" : apiStatus === "checking" ? "Sprawdzamy" : "Tryb demo"}
+                  </span>
+                </div>
+                <div className="mt-4 rounded-2xl border border-white/5 bg-slate-900/60 p-4">
+                  <div className="flex items-center justify-between text-xs text-slate-300">
+                    <span>Przygotowanie środowiska</span>
+                    <span>78%</span>
                   </div>
+                  <div className="mt-3 h-2 rounded-full bg-slate-800">
+                    <div className="h-2 w-[78%] rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
+                  </div>
+                </div>
+                <div className="mt-5 rounded-2xl border border-white/10 bg-slate-900/50 p-4">
                   <LoginPanel />
-                  <div className="grid gap-4 rounded-3xl bg-slate-950/70 p-4 border border-white/5">
-                    <div className="flex items-center justify-between text-xs text-slate-400">
-                      <span>Governance score</span>
-                      <span>96 / 100</span>
-                    </div>
-                    <div className="h-1.5 rounded-full bg-white/10">
-                      <div className="h-full w-[87%] rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
-                    </div>
-                    <p className="text-[11px] text-slate-500">
-                      Data refreshed 14 minutes ago · Continuous monitoring active
-                    </p>
-                  </div>
                 </div>
+                <button
+                  onClick={() => signIn("github")}
+                  className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-white px-4 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:-translate-y-0.5"
+                >
+                  Otwórz panel
+                </button>
+                <p className="mt-3 text-xs text-slate-400">SCIM + OAuth. Bez instalacji klienta.</p>
               </div>
             </section>
 
-            <section id="capabilities" className="mt-24 grid gap-8 lg:grid-cols-4">
-              {capabilityDeck.map((card) => (
-                <div
-                  key={card.title}
-                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7 shadow-[0_25px_55px_-35px_rgba(30,64,175,0.6)] backdrop-blur"
-                >
-                  <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent" />
-                  </div>
-                  <div className="relative space-y-4">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 text-sm font-semibold text-white">
-                      FT
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">{card.title}</h3>
-                    <p className="text-sm leading-relaxed text-slate-300">{card.description}</p>
-                    <button className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-200 transition hover:text-blue-100">
-                      View blueprint →
-                    </button>
-                  </div>
-                </div>
+            <div className="mt-10 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+              {partnerBadges.map((partner) => (
+                <span key={partner} className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-slate-200/80">
+                  {partner}
+                </span>
               ))}
-            </section>
+            </div>
 
-            <section id="playbook" className="mt-24 rounded-[32px] border border-white/10 bg-white/5 p-8">
-              <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
-                <div className="max-w-md space-y-5">
-                  <h2 className="text-3xl font-bold text-white">Implementation playbook</h2>
-                  <p className="text-sm leading-relaxed text-slate-300">
-                    From the first connector to exec-ready scorecards, FolderTree pilots are structured around outcome-based checkpoints. No loose ends, no side spreadsheets.
-                  </p>
-                  <a href="#" className="inline-flex text-sm font-semibold text-blue-300 transition hover:text-blue-200">
-                    Download the onboarding checklist →
-                  </a>
-                </div>
-                <div className="grid flex-1 gap-6">
-                  {operationsTimeline.map((event) => (
-                    <div
-                      key={event.title}
-                      className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-[0_25px_55px_-45px_rgba(56,189,248,0.6)]"
-                    >
-                      <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500" />
-                      <div className="flex items-center justify-between pl-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
-                        <span>{event.phase}</span>
-                        <span>Milestone</span>
+            <section id="capabilities" className="ft-section-tight">
+              <div className="ft-card ft-card-pad border-white/10 bg-slate-950/70 shadow-[0_35px_90px_-60px_rgba(59,130,246,0.55)]">
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                  <div className="max-w-xl space-y-3">
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Moce platformy</p>
+                    <h2 className="text-3xl font-bold text-white">Komplet narzędzi dla ludzi od porządku</h2>
+                    <p className="text-sm leading-relaxed text-slate-200/90">Symuluj zmiany, pilnuj zgodności i tłumacz decyzje AI – wszystko w jednym, wyważonym interfejsie.</p>
+                  </div>
+                  <div className="grid flex-1 gap-4 md:grid-cols-2">
+                    {capabilityDeck.map((card) => (
+                      <div key={card.title} className="ft-card border-white/10 bg-white/5 p-6">
+                        <p className="text-xs uppercase tracking-[0.28em] text-slate-400">Ścieżka</p>
+                        <h3 className="mt-2 text-lg font-semibold text-white">{card.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-300">{card.description}</p>
                       </div>
-                      <h3 className="mt-3 pl-4 text-lg font-semibold text-white">{event.title}</h3>
-                      <p className="mt-2 pl-4 text-sm leading-relaxed text-slate-300">{event.copy}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            <section className="mt-24 grid gap-8 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)]">
-              <div className="rounded-[32px] border border-white/10 bg-gradient-to-br from-blue-600/20 via-indigo-500/20 to-purple-500/20 p-8">
-                <h2 className="text-3xl font-bold text-white">Revenue-grade reporting without spreadsheets</h2>
-                <p className="mt-4 text-sm leading-relaxed text-slate-100/80">
-                  Every FolderTree workspace ships with configurable scorecards for compliance, automation velocity, and alignment. Export ready-to-present decks or stream the widgets into your BI stack.
-                </p>
-                <div className="mt-8 grid gap-6 md:grid-cols-2">
-                  {dashboardInsights.map((insight) => (
-                    <div key={insight.title} className="rounded-3xl border border-white/20 bg-slate-900/60 p-6">
-                      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{insight.detail}</p>
-                      <p className="mt-3 text-3xl font-bold text-white">{insight.trend}</p>
-                      <p className="mt-2 text-sm text-slate-300">{insight.title}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-6">
-                {testimonials.map((item) => (
-                  <div
-                    key={item.name}
-                    className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_30px_60px_-45px_rgba(59,130,246,0.9)]"
-                  >
-                    <p className="text-sm leading-relaxed text-slate-200">“{item.quote}”</p>
-                    <div className="mt-4">
-                      <p className="text-sm font-semibold text-white">{item.name}</p>
-                      <p className="text-xs text-slate-400">{item.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section id="pricing" className="mt-24 grid gap-8 lg:grid-cols-2">
-              {pricingPlans.map((plan) => (
-                <div
-                  key={plan.name}
-                  className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-8 shadow-[0_30px_70px_-55px_rgba(79,70,229,0.9)]"
-                >
-                  {plan.badge && (
-                    <span className="absolute right-6 top-6 inline-flex rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-white">
-                      {plan.badge}
-                    </span>
-                  )}
-                  <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
-                  <p className="mt-2 text-sm text-slate-300">{plan.cadence}</p>
-                  <p className="mt-6 text-4xl font-bold text-white">{plan.price}</p>
-                  <ul className="mt-6 space-y-3 text-sm text-slate-200">
-                    {plan.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-center gap-3">
-                        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[12px] text-blue-200">
-                          ✓
-                        </span>
-                        {bullet}
-                      </li>
                     ))}
-                  </ul>
-                  <button
-                    onClick={() => signIn("github")}
-                    className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-white/90 px-4 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:-translate-y-0.5 hover:bg-white"
-                  >
-                    Access plan
-                  </button>
+                  </div>
                 </div>
-              ))}
+              </div>
             </section>
 
-            <section className="mt-24 grid gap-10 rounded-[32px] border border-white/10 bg-white/5 p-8 lg:grid-cols-[minmax(0,_0.8fr)_minmax(0,_1.2fr)]">
-              <div className="space-y-5">
-                <h2 className="text-3xl font-bold text-white">Frequently asked</h2>
-                <p className="text-sm leading-relaxed text-slate-300">
-                  Not seeing your question? Join our weekly product clinics or chat with success engineers directly inside the app.
-                </p>
-                <a href="#" className="inline-flex text-sm font-semibold text-blue-300 transition hover:text-blue-200">
-                  Open the knowledge base →
-                </a>
-              </div>
-              <div className="space-y-4">
-                {faqs.map((faq) => (
-                  <div
-                    key={faq.question}
-                    className="rounded-3xl border border-white/10 bg-slate-900/70 p-6 shadow-[0_25px_55px_-45px_rgba(15,23,42,1)]"
-                  >
-                    <h3 className="text-sm font-semibold text-white">{faq.question}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-300">{faq.answer}</p>
+            <section id="playbook" className="ft-section-tight">
+              <div className="ft-card ft-card-pad border-white/10 bg-white/5">
+                <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-16">
+                  <div className="max-w-md space-y-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Playbook</p>
+                    <h2 className="text-3xl font-bold text-white">Jak wprowadzamy porządek</h2>
+                    <p className="text-sm leading-relaxed text-slate-300">Od pierwszego konektora do raportu dla zarządu w 4 tygodnie. Zespół success pilnuje kolejnych etapów, a Ty widzisz postęp na żywo.</p>
+                    <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/80">Bez arkuszy</span>
                   </div>
-                ))}
+                  <div className="grid flex-1 gap-4 md:grid-cols-2">
+                    {operationsTimeline.map((event) => (
+                      <div key={event.title} className="ft-card border-white/10 bg-slate-900/70 p-6">
+                        <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+                          <span>{event.phase}</span>
+                          <span>Etap</span>
+                        </div>
+                        <h3 className="mt-3 text-lg font-semibold text-white">{event.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-300">{event.copy}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="ft-section-tight">
+              <div className="grid gap-8 lg:grid-cols-[minmax(0,_1.1fr)_minmax(0,_0.9fr)]">
+                <div className="ft-card ft-card-pad border-white/10 bg-gradient-to-br from-blue-600/15 via-indigo-600/10 to-purple-600/10">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-200/80">Widoczność</p>
+                      <h2 className="mt-2 text-3xl font-bold text-white">Raporty gotowe dla zarządu</h2>
+                    </div>
+                    <span className="rounded-full border border-white/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/80">Export</span>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-100/85">
+                    Wbudowane scorecardy dla automatyzacji, zgodności i adopcji. Wysyłasz PDF lub podłączasz do BI – bez arkuszy pomocniczych.
+                  </p>
+                  <div className="mt-8 grid gap-6 md:grid-cols-2">
+                    {dashboardInsights.map((insight) => (
+                      <div key={insight.title} className="ft-card border-white/15 bg-slate-950/70 p-6">
+                        <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{insight.detail}</p>
+                        <p className="mt-3 text-3xl font-bold text-white">{insight.trend}</p>
+                        <p className="mt-2 text-sm text-slate-300">{insight.title}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="space-y-6">
+                  {testimonials.map((item) => (
+                    <div key={item.name} className="ft-card border-white/10 bg-white/5 p-6 shadow-[0_30px_70px_-55px_rgba(15,23,42,0.9)]">
+                      <p className="text-sm leading-relaxed text-slate-200">“{item.quote}”</p>
+                      <div className="mt-4">
+                        <p className="text-sm font-semibold text-white">{item.name}</p>
+                        <p className="text-xs text-slate-400">{item.role}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section id="pricing" className="ft-section-tight">
+              <div className="ft-card ft-card-pad border-white/10 bg-slate-950/70">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Plany</p>
+                    <h2 className="text-3xl font-bold text-white">Prosto: dwa pakiety dla zespołów</h2>
+                  </div>
+                  <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/80">Bez ukrytych opłat</span>
+                </div>
+                <div className="mt-8 grid gap-8 lg:grid-cols-2">
+                  {pricingPlans.map((plan) => (
+                    <div key={plan.name} className="relative overflow-hidden ft-card border-white/10 bg-white/5 p-8">
+                      {plan.badge && (
+                        <span className="absolute right-6 top-6 inline-flex rounded-full bg-gradient-to-r from-blue-500 to-purple-500 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.3em] text-white">
+                          {plan.badge}
+                        </span>
+                      )}
+                      <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
+                      <p className="mt-2 text-sm text-slate-300">{plan.cadence}</p>
+                      <p className="mt-6 text-4xl font-bold text-white">{plan.price}</p>
+                      <ul className="mt-6 space-y-3 text-sm text-slate-200">
+                        {plan.bullets.map((bullet) => (
+                          <li key={bullet} className="flex items-center gap-3">
+                            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[12px] text-blue-200">✓</span>
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                      <button
+                        onClick={() => signIn("github")}
+                        className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-white/90 px-4 py-3 text-sm font-semibold text-slate-900 shadow-lg transition hover:-translate-y-0.5 hover:bg-white"
+                      >
+                        Wybierz plan
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section id="faq" className="ft-section-tight">
+              <div className="ft-card ft-card-pad border-white/10 bg-white/5 lg:grid lg:grid-cols-[minmax(0,_0.8fr)_minmax(0,_1.2fr)] lg:gap-8">
+                <div className="space-y-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">FAQ</p>
+                  <h2 className="text-3xl font-bold text-white">Najczęstsze pytania</h2>
+                  <p className="text-sm leading-relaxed text-slate-300">Nie widzisz swojego pytania? Napisz na support lub wpadnij na demo live.</p>
+                </div>
+                <div className="space-y-4">
+                  {faqs.map((faq) => (
+                    <div key={faq.question} className="ft-card border-white/10 bg-slate-900/70 p-6">
+                      <h3 className="text-sm font-semibold text-white">{faq.question}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-300">{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
           </main>
