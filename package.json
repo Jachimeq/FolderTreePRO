@@ -41,7 +41,7 @@
     "express": "^4.18.2",
     "graph.js": "^1.21.1",
     "lucide-react": "^0.525.0",
-    "next": "^15.4.3",
+    "next": "^16.1.1-canary.10",
     "openai": "^5.10.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

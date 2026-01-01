@@ -6,7 +6,11 @@ export const metadata = {
   description: 'Transform chaos into clarity with intelligent file management powered by AI. Automatically organize, classify, and optimize your folder structure.',
   keywords: 'file organization, AI, productivity, folder management, automation',
   authors: [{ name: 'FolderTree PRO' }],
-  viewport: 'width=device-width, initial-scale=1',
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
   themeColor: '#2563eb',
 };
 
@@ -16,8 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <meta name="google" content="notranslate" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -25,7 +30,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+      <body
+        className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50"
+        translate="no"
+        suppressHydrationWarning
+        data-gramm="false"
+        data-gramm_editor="false"
+      >
         <Providers>{children}</Providers>
       </body>
     </html>
